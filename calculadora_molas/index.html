@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Força da Mola</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Calculadora de Força da Mola</h1>
+        
+        <label for="doorWidth">Largura da Porta (mm):</label>
+        <input type="number" id="doorWidth" value="3000">
+        
+        <label for="doorHeight">Altura da Porta (mm):</label>
+        <input type="number" id="doorHeight" value="2500">
+        
+        <label for="calculationWeight">Peso de Cálculo (kg/m²):</label>
+        <input type="number" id="calculationWeight" value="12">
+        
+        <label for="cycleCount">Contagem de Ciclos:</label>
+        <input type="number" id="cycleCount" value="15000">
+        
+        <label for="cableDiameter">Diâmetro do Cabo (mm):</label>
+        <input type="number" id="cableDiameter" value="3">
+        
+        <label for="cableMaxLoad">Força Máxima do Cabo (N):</label>
+        <input type="number" id="cableMaxLoad" value="163">
+        
+        <button onclick="calculate()">Calcular</button>
+        
+        <div class="result">
+            <p id="doorWeight"></p>
+            <p id="springForce"></p>
+            <p id="cableStrength"></p>
+        </div>
+    </div>
+
+    <script>
+        function calculate() {
+            var doorWidth = parseFloat(document.getElementById("doorWidth").value);
+            var doorHeight = parseFloat(document.getElementById("doorHeight").value);
+            var calculationWeight = parseFloat(document.getElementById("calculationWeight").value);
+            var cycleCount = parseFloat(document.getElementById("cycleCount").value);
+            var cableDiameter = parseFloat(document.getElementById("cableDiameter").value);
+            var cableMaxLoad = parseFloat(document.getElementById("cableMaxLoad").value);
+            
+            // Cálculos
+            var doorWeight = doorWidth * doorHeight * calculationWeight;
+            var springForce = cycleCount * calculationWeight;
+            var cableStrength = cableDiameter * cableMaxLoad;
+            
+            // Exibindo resultados
+            document.getElementById("doorWeight").innerHTML = "Peso da Porta: <span>" + doorWeight.toFixed(2) + " kg</span>";
+            document.getElementById("springForce").innerHTML = "Força da Mola: <span>" + springForce.toFixed(2) + " N</span>";
+            document.getElementById("cableStrength").innerHTML = "Força Máxima do Cabo: <span>" + cableStrength.toFixed(2) + " N</span>";
+        }
+    </script>
+</body>
+</html>
